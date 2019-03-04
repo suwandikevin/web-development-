@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Chat App </title>
+    </head>
+    <body>
+        <div id = "pack">
+            <div id = "sender">
+                Nama &emsp; :
+                <input type = "text" placeholder = "Nama" id = "nama"/>
+            </div>
+
+            <div id = "message">
+                Chat &nbsp; &emsp; :  
+                <input type = "text" placeholder = "Type your message here.." id = "pesan"/>  
+            </div>
+
+            <button> SEND </button>
+            <button> CLEAR </button>
+            <div id = "chatbox">
+                <br><br>
+            </div>
+
+        <script>
+            klik = document.getElementsByTagName("button")[0];
+            klik.addEventListener("click", buatchat);
+            // enter = document.getElementsByTagName("input")[1];
+            // enter.addEventListener("keydown",tekanenter);
+            
+            function tekanenter (kode) {
+                if (kode.keyCode==13) buatchat();
+            }
+
+            function buatchat () {
+
+                divchatbox = document.createElement("div");
+                inputsender = document.getElementsByTagName("input")[0];
+                sendervalue = inputsender.value;
+                inputmessage = document.getElementsByTagName("input")[1];
+                messagevalue = inputmessage.value;
+                newdivchatbox = document.createTextNode(sendervalue  + " : " + messagevalue);
+                divchatbox.appendChild(newdivchatbox);
+                orangtua = document.getElementById("chatbox");
+                orangtua.appendChild(divchatbox);
+                inputsender.value = "";
+                inputmessage.value = "";
+            }
+
+            klik2 = document.getElementsByTagName("button")[1];
+            klik2.addEventListener("click",clearchat);
+
+            function clearchat () {
+                pemimpin = document.getElementById("chatbox");
+	            pengikut = pemimpin.childNodes.length;
+	            for(i=0; i<=pengikut; i++){
+		        pemimpin.removeChild(pemimpin.childNodes[0]);
+                }
+                
+            }
+        </script>
+    </body>
+</html>
